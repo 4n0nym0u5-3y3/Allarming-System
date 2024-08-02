@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "author": "The Bin - Hack Club",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 227.4, "left": 70, "attrs": {} },
+    { "type": "board-pi-pico-w", "id": "pico", "top": 227.15, "left": -150.05, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "wokwi-pir-motion-sensor-0",
+      "top": 32.8,
+      "left": 69.42,
+      "attrs": {}
+    },
+    { "type": "wokwi-buzzer", "id": "wokwi-buzzer-0", "top": 271.2, "left": 251.4, "attrs": {} },
+    { "type": "wokwi-led", "id": "wokwi-led-0", "top": 255.6, "left": 128.6, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 329.8,
+      "left": 114.35,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 20.7,
+      "left": 226.3,
+      "attrs": { "distance": "47" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:VBUS", "bb1:bp.1", "red", [ "h115.51", "v163.2" ] ],
+    [ "bb1:bn.16", "bb1:20b.h", "black", [ "v0" ] ],
+    [ "wokwi-pir-motion-sensor-0:VCC", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "wokwi-pir-motion-sensor-0:GND", "bb1:tn.2", "black", [ "v105.6", "h-0.26" ] ],
+    [ "bb1:bp.25", "bb1:tp.25", "red", [ "v-0.9", "h59.2", "v-172.8", "h-57.6" ] ],
+    [ "bb1:bn.23", "bb1:tn.23", "black", [ "v0" ] ],
+    [ "wokwi-pir-motion-sensor-0:OUT", "pico:GP2", "blue", [ "v48", "h-278.54", "v38.4" ] ],
+    [ "bb1:21b.h", "pico:GP8", "cyan", [ "v144", "h-460.8", "v-28.8" ] ],
+    [ "pico:GND.1", "bb1:bn.1", "black", [ "h-57.6", "v220.8", "h249.6", "v-57.6", "h9.6" ] ],
+    [ "bb1:bn.5", "bb1:6b.i", "black", [ "v0" ] ],
+    [ "bb1:7t.d", "pico:GP13", "gray", [ "v182.4", "h-297.6", "v-48", "h-19.2", "v-48" ] ],
+    [ "wokwi-buzzer-0:1", "bb1:20b.g", "", [ "$bb" ] ],
+    [ "wokwi-buzzer-0:2", "bb1:21b.g", "", [ "$bb" ] ],
+    [ "wokwi-led-0:A", "bb1:7t.c", "", [ "$bb" ] ],
+    [ "wokwi-led-0:C", "bb1:6t.c", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:6b.h", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:6t.d", "", [ "$bb" ] ],
+    [ "ultrasonic1:GND", "bb1:tn.21", "black", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "bb1:tp.18", "red", [ "v0" ] ],
+    [ "pico:GP9", "ultrasonic1:TRIG", "green", [ "h-86.4", "v-201.6", "h537.6", "v19.2" ] ],
+    [ "pico:GP10", "ultrasonic1:ECHO", "#8f4814", [ "h-76.8", "v-201.6", "h537.6", "v-9.6" ] ]
+  ],
+  "dependencies": {}
+}
